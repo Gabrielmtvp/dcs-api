@@ -1,5 +1,6 @@
 package com.service.digital.dcsapi.services.impls;
 
+import com.service.digital.dcsapi.dtos.ChargingRecordsPage;
 import com.service.digital.dcsapi.exceptions.ChargeCostZeroException;
 import com.service.digital.dcsapi.exceptions.EndDateLowerThanStartDateException;
 import com.service.digital.dcsapi.exceptions.LastChargeEndDateGreaterThanNewStartDateException;
@@ -9,6 +10,7 @@ import com.service.digital.dcsapi.services.ChargingRecordService;
 import com.service.digital.dcsapi.utils.DateTimeUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -57,10 +59,15 @@ public class ChargingRecordServiceImpl implements ChargingRecordService {
         return this.chargingRecordRepository.findAll();
     }
 
-    public List<ChargingRecord> getAllChargingRecords(int page, int size, String sortProperty, String sortDirection, Long id) {
+    public ChargingRecordsPage getAllChargingRecords(int page, int size, String sortProperty, String sortDirection, Long id) {
         Sort.Direction sortDirect = sortDirection.equals("DESC") ? Sort.Direction.DESC : Sort.Direction.ASC;
         Pageable pageable = PageRequest.of(page, size, sortDirect, sortProperty);
 
-        return chargingRecordRepository.findAll(pageable).getContent();
+        Page<ChargingRecord> chargingRecordPage = chargingRecordRepository.findAll(pageable);
+
+        List<ChargingRecord> records = chargingRecordPage.getContent();
+        long totalRecords = chargingRecordPage.getTotalElements();
+
+        return new ChargingRecordsPage(records, totalRecords);
     }
 }
