@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/api/charge")
+@CrossOrigin(origins = "*")
 public class ChargingRecordController {
 
     @Autowired
