@@ -33,7 +33,7 @@ public class ChargingRecord {
 
     @ManyToOne()
     @JoinColumn(name = "company_id", insertable = false, updatable = false)
-    private Cpo cpo;
+    private ChargingPoint chargingPoint;
 
     @NotNull(message = "Invalid Company ID: Company ID is NULL")
     @Column(name = "company_id")

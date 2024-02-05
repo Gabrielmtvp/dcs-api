@@ -13,7 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 @Entity(name = "cpo")
-public class Cpo {
+public class ChargingPoint {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
