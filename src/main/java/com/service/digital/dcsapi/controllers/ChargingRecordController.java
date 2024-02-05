@@ -3,15 +3,9 @@ package com.service.digital.dcsapi.controllers;
 import com.service.digital.dcsapi.models.ChargingRecord;
 import com.service.digital.dcsapi.services.impls.ChargingRecordServiceImpl;
 import jakarta.validation.Valid;
-import org.hibernate.query.Page;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.awt.print.Pageable;
-import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "/api/charge")
