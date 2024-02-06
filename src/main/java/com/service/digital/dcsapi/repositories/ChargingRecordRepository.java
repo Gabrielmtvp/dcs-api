@@ -9,6 +9,6 @@ import java.util.UUID;
 
 @Repository
 public interface ChargingRecordRepository extends JpaRepository<ChargingRecord, Long> {
-    <Optional> ChargingRecord findTopByOrderByIdDesc();
+    <Optional> ChargingRecord findByVehicle(String vehicle);
 
 }

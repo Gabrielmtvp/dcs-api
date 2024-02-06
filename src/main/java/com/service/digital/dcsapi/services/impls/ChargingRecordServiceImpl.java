@@ -39,7 +39,7 @@ public class ChargingRecordServiceImpl implements ChargingRecordService {
             throw new EndDateLowerThanStartDateException();
         }
 
-        ChargingRecord lastCdr = this.chargingRecordRepository.findTopByOrderByIdDesc();
+        ChargingRecord lastCdr = this.chargingRecordRepository.findByVehicle(chargingRecord.getVehicle());
         if(lastCdr != null) {
             boolean isLastChargeEndDateGreaterThanNewStartDate = DateTimeUtils.isLastChargeEndDateGreaterThanNewStartDate(chargingRecord.getStartDate(), lastCdr.getEndDate());
             if(isLastChargeEndDateGreaterThanNewStartDate) {
@@ -48,14 +48,6 @@ public class ChargingRecordServiceImpl implements ChargingRecordService {
         }
 
         return this.chargingRecordRepository.save(chargingRecord);
-    }
-
-    public ChargingRecord findLastCdrById() {
-        return this.chargingRecordRepository.findTopByOrderByIdDesc();
-    }
-
-    public List<ChargingRecord> findAllCdrs() {
-        return this.chargingRecordRepository.findAll();
     }
 
     public ChargingRecordsPage getAllChargingRecords(int page, int size, String sortProperty, String sortDirection, Long id) {
