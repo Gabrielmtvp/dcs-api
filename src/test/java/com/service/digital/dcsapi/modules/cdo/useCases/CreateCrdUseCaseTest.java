@@ -30,7 +30,7 @@ public class CreateCrdUseCaseTest {
         ChargingPoint chargingPoint = new ChargingPoint(1L, "Digital Charging Solutions");
         LocalDateTime startDate = LocalDateTime.of(2024, 02, 03, 10, 10);
         LocalDateTime endDate = LocalDateTime.of(2024, 02, 03, 10, 20);
-        new ChargingRecord(1L,"TST0000", startDate, endDate, 10, chargingPoint, 1L);
+        new ChargingRecord(1L, "c4ec79e0-f5eb-4812-8fb4-19943be03df8", "TST0000", startDate, endDate, 10, chargingPoint, 1L);
     }
 
     @Test()
@@ -39,7 +39,7 @@ public class CreateCrdUseCaseTest {
         ChargingPoint chargingPoint = new ChargingPoint(1L, "Digital Charging Solutions");
         LocalDateTime startDate = LocalDateTime.of(2024, 02, 03, 10, 10);
         LocalDateTime endDate = LocalDateTime.of(2024, 02, 03, 10, 00);
-        ChargingRecord chargingRecord = new ChargingRecord(1L,"TST0000", startDate, endDate, 10, chargingPoint, 1L);
+        ChargingRecord chargingRecord = new ChargingRecord(1L,"c4ec79e0-f5eb-4812-8fb4-19943be03df8", "TST0000", startDate, endDate, 10, chargingPoint, 1L);
 
         Throwable exception = Assertions.assertThrows(EndDateLowerThanStartDateException.class, () -> chargingRecordServiceImpl.createCdr(chargingRecord));
         Assertions.assertEquals("End time is lower than start time.", exception.getMessage());
@@ -51,7 +51,7 @@ public class CreateCrdUseCaseTest {
         ChargingPoint chargingPoint = new ChargingPoint(1L, "Digital Charging Solutions");
         LocalDateTime startDate = LocalDateTime.of(2024, 02, 03, 10, 10);
         LocalDateTime endDate = LocalDateTime.of(2024, 02, 03, 10, 20);
-        ChargingRecord chargingRecord = new ChargingRecord(1L,"TST0000", startDate, endDate, 0, chargingPoint, 1L);
+        ChargingRecord chargingRecord = new ChargingRecord(1L,"c4ec79e0-f5eb-4812-8fb4-19943be03df8", "TST0000", startDate, endDate, 0, chargingPoint, 1L);
 
         Throwable exception = Assertions.assertThrows(ChargeCostZeroException.class, () -> chargingRecordServiceImpl.createCdr(chargingRecord));
         Assertions.assertEquals("Charge must be greater than zero.", exception.getMessage());

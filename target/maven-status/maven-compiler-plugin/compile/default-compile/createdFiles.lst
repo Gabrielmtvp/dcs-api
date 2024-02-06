@@ -6,7 +6,6 @@ com/service/digital/dcsapi/exceptions/EndDateLowerThanStartDateException.class
 com/service/digital/dcsapi/services/impls/ChargingRecordServiceImpl.class
 com/service/digital/dcsapi/exceptions/GlobalExceptionHandler.class
 com/service/digital/dcsapi/DcsApiApplication.class
-com/service/digital/dcsapi/models/Cpo.class
 com/service/digital/dcsapi/exceptions/LastChargeEndDateGreaterThanNewStartDateException.class
 com/service/digital/dcsapi/exceptions/ChargeCostZeroException.class
 com/service/digital/dcsapi/models/ChargingRecord.class
