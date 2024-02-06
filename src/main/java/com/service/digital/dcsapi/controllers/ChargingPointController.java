@@ -25,5 +25,4 @@ public class ChargingPointController {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
-
 }

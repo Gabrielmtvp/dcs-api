@@ -14,20 +14,25 @@ import java.time.LocalDateTime;
 @Data
 @Entity(name = "cdr")
 public class ChargingRecord {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Invalid Vehicle: Vehicle is BLANK")
+    @NotBlank(message = "Invalid Session: Session cannot be blank")
+    private String session;
+
+    @NotBlank(message = "Invalid Vehicle: Vehicle cannot be blank")
     private String vehicle;
-    @NotNull(message = "Invalid Start Date: Start Date is NULL")
+
+    @NotNull(message = "Invalid Start Date: Start Date cannot be null")
     @Column(name = "start_date")
     private LocalDateTime startDate;
-    @NotNull(message = "Invalid End Date: End Date is NULL")
+
+    @NotNull(message = "Invalid End Date: End Date cannot be null")
     @Column(name = "end_date")
     private LocalDateTime endDate;
-    @NotNull(message = "Invalid Total Cost: Total Cost is NULL")
+
+    @NotNull(message = "Invalid Total Cost: Total Cost cannot be null")
     @Column(name = "total_cost")
     private double totalCost;
 
@@ -35,8 +40,7 @@ public class ChargingRecord {
     @JoinColumn(name = "company_id", insertable = false, updatable = false)
     private ChargingPoint chargingPoint;
 
-    @NotNull(message = "Invalid Company ID: Company ID is NULL")
+    @NotNull(message = "Invalid Company ID: Company ID cannot be null")
     @Column(name = "company_id")
     private Long companyId;
-
 }

@@ -26,28 +26,6 @@ public class ChargingRecordController {
         }
     }
 
-    @GetMapping("/lastCdr")
-    public ResponseEntity<Object> findLastCdr() {
-        try {
-            var lastCdr = this.chargingRecordServiceImpl.findLastCdrById();
-            return ResponseEntity.ok().body(lastCdr);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.internalServerError().body(e.getMessage());
-        }
-    }
-
-    @GetMapping("allCdr")
-    public ResponseEntity<Object> allCdr() {
-        try {
-            var allCdrs = this.chargingRecordServiceImpl.findAllCdrs();
-            return ResponseEntity.ok().body(allCdrs);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.internalServerError().body(e.getMessage());
-        }
-    }
-
     @GetMapping("getAllChargingRecords")
     public ResponseEntity<?> getAllChargingRecords(
             @RequestParam(name = "page", defaultValue = "0") int page,
@@ -63,6 +41,4 @@ public class ChargingRecordController {
             return ResponseEntity.internalServerError().body(e.getMessage());
         }
     }
-
-
 }

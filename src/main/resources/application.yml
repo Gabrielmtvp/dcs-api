@@ -1,9 +1,9 @@
 spring:
   datasource:
-    url: ${DATABASE_URL}
+    url: jdbc:postgresql://localhost:5432/main_database
     driver-class-name: org.postgresql.Driver
-    username: ${DATABASE_USERNAME}
-    password: ${DATABASE_PASSWORD}
+    username: gabriel
+    password: Gabriel@123
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
@@ -16,3 +16,11 @@ spring:
       dialect: org.hibernate.dialect.PostgreSQLDialect
       format_sql: true
       show-sql: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: prometheus
+  endpoint:
+    prometheus:
+      enabled: true
